@@ -54,7 +54,7 @@ function saveMemos() {
 function deleteMemo(event) {
   const li = event.target.parentElement;
   li.remove();
-  memos = memos.filter((memo) => memo.id !== li.id);
+  memos = memos.filter((memo) => memo.id !== parseInt(li.id));
   saveMemos();
 }
 
