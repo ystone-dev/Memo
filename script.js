@@ -59,24 +59,26 @@ function deleteMemo(event) {
 }
 
 function paintMemo(newMemoTitle, newMemoContent) {
-  const li = document.createElement("li");
-  li.id = newMemoTitle.id;
-  const title = document.createElement("h2");
-  title.textContent = newMemoTitle.text;
-  const content = document.createElement("p");
-  content.textContent = newMemoContent.text;
-  const button = document.createElement("button");
-  button.textContent = "삭제";
-  button.addEventListener("click", deleteMemo);
-  memoList.append(li);
-  li.append(title, content, button);
+  if (newMemoTitle.text !== "제목없음" || newMemoContent.text !== "") {
+    const li = document.createElement("li");
+    li.id = newMemoTitle.id;
+    const title = document.createElement("h2");
+    title.textContent = newMemoTitle.text;
+    const content = document.createElement("p");
+    content.textContent = newMemoContent.text;
+    const button = document.createElement("button");
+    button.textContent = "삭제";
+    button.addEventListener("click", deleteMemo);
+    memoList.append(li);
+    li.append(title, content, button);
 
-  memos.push({
-    title: newMemoTitle.text,
-    content: newMemoContent.text,
-    id: newMemoTitle.id,
-  });
-  saveMemos();
+    memos.push({
+      title: newMemoTitle.text,
+      content: newMemoContent.text,
+      id: newMemoTitle.id,
+    });
+    saveMemos();
+  }
 }
 
 function loadMemos() {
