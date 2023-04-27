@@ -17,16 +17,24 @@ function openModal(event) {
   myModal.style.display = "block";
 }
 
-closeBtn.addEventListener("click", function () {
-  console.log(closeBtn);
+function hideModal() {
   myModal.style.display = "none";
-  handleMemoSubmit(event);
+  handleMemoSubmit();
+}
+
+closeBtn.addEventListener("click", () => {
+  hideModal();
 });
 
-window.addEventListener("click", function (event) {
+document.addEventListener("click", (event) => {
   if (event.target === myModal) {
-    myModal.style.display = "none";
-    handleMemoSubmit(event);
+    hideModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    hideModal();
   }
 });
 
